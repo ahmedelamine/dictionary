@@ -11,15 +11,18 @@ function App() {
   const [language_code, setLanguageCode] = useState("en");
   const [word, setWord] = useState("");
   const [data, setData] = useState([]);
+  const [error, setError] = useState(false);
 
   const dictionaryApi = async (language_code, word) => {
     try {
       const { data } = await axios.get(
         `https://api.dictionaryapi.dev/api/v2/entries/${language_code}/${word}`
       );
-      console.log(data);
+      // console.log(data);
+      setError(false);
       setData(data);
     } catch (error) {
+      setError(true);
       console.log(error);
     }
   };
@@ -35,6 +38,9 @@ function App() {
   return (
     <div className="App" style={appStyle}>
       <Container maxWidth="md" style={containerStyle}>
+        {error && (
+          <Typography variant="h5" color="secondary">Something went wrong!!</Typography>
+        )}
         <Typography variant="h3">Word Hunt</Typography>
         <TextField
           id="standard-basic"

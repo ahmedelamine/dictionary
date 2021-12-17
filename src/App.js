@@ -41,7 +41,7 @@ function App() {
         {error && (
           <Typography variant="h5" color="secondary">Something went wrong!!</Typography>
         )}
-        <Typography variant="h3">Word Hunt</Typography>
+        <Typography variant="h3">Dictionary App</Typography>
         <TextField
           id="standard-basic"
           label="Search Word"
